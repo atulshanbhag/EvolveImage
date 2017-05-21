@@ -162,6 +162,20 @@ class Gene(object):
                                           int(self.color.b * (1 + mutation_size)))), 255)
             self._color = Color(r, g, b)
 
+    # Save the gene in case of program interrupt.
+    def save_gene(self):
+        """ Save the gene object in case 
+        of the program interrupt.
+        """
+        save = {"diameter": self._diameter,
+                "pos": (self._pos.x, self._pos.y),
+                "color": (self._color.r, self._color.g, self._color.b)}
+        return save
+
+    # Load the saved gene.
+    def load_gene(self):
+        pass
+
 if __name__ == '__main__':
-    g = Gene()
-    g.mutate()
+    c = Color(10, 10, 10)
+    print(c)
