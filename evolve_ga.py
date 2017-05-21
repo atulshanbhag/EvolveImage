@@ -49,6 +49,16 @@ class Point(object):
     def y(self):
         return self._y
 
+    # Save point object in case of interrupt.
+    def save(self):
+        s = {'x': self._x, 'y': self._y}
+        return s
+
+    # Load point object from saved paramter.
+    def load(self, s):
+        self._x = s['x']
+        self._y = s['y']
+
     # Add 2 points
     def __add__(self, other):
         return Point(self.x + other.x, self.y + other.y)
@@ -87,6 +97,19 @@ class Color(object):
     @property
     def alpha(self):
         return self._alpha
+
+    # Save color object in case of interrupt.
+    def save(self):
+        s = {'r': self._r, 'g': self._g,
+             'b': self._b, 'alpha': self._alpha}
+        return s
+
+    # Load color object from saved paramter.
+    def load(self, s):
+        self._r = s['r']
+        self._g = s['g']
+        self._b = s['b']
+        self._alpha = s['alpha']
 
     def __repr__(self):
         return 'Color({0}, {1}, {2}, {3})'.format(
@@ -163,19 +186,26 @@ class Gene(object):
             self._color = Color(r, g, b)
 
     # Save the gene in case of program interrupt.
-    def save_gene(self):
+    def save(self):
         """ Save the gene object in case 
         of the program interrupt.
         """
-        save = {"diameter": self._diameter,
-                "pos": (self._pos.x, self._pos.y),
-                "color": (self._color.r, self._color.g, self._color.b)}
-        return save
+        s = {'diameter': self._diameter,
+             'pos': self._pos,
+             'color': self._color}
+        return s
 
     # Load the saved gene.
-    def load_gene(self):
-        pass
+    def load(self, s):
+        """ Load the gene object from 
+        save parameter
+        """
+        self._diameter = s['diameter']
+        self._pos = s['pos']
+        self._color = s['color']
 
 if __name__ == '__main__':
-    c = Color(10, 10, 10)
-    print(c)
+    g = Gene()
+    print(g)
+    g.load(g.save())
+    print(g)
