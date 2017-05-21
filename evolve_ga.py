@@ -72,7 +72,7 @@ class Point(object):
 
 class Color(object):
     """ Helper class for representing a color.
-    Represented as a RGB value in radix-256 
+    Represented as a RGB value in radix-256
     with opacity.
     """
 
@@ -136,8 +136,8 @@ class Gene(object):
                           random.randint(0, TARGET_IMAGE_HEIGHT))
 
         # Randomly assign color to pixel with random opacity
-        self._color = Color(random.randint(0, 256), random.randint(
-            0, 256), random.randint(0, 256), random.randint(0, 256))
+        self._color = Color(random.randint(0, 255), random.randint(
+            0, 255), random.randint(0, 255), random.randint(0, 255))
 
     @property
     def diameter(self):
@@ -183,7 +183,9 @@ class Gene(object):
                                           int(self.color.g * (1 + mutation_size)))), 255)
             b = min(max(0, random.randint(int(self.color.b * (1 - mutation_size)),
                                           int(self.color.b * (1 + mutation_size)))), 255)
-            self._color = Color(r, g, b)
+            alpha = min(max(0, random.randint(int(self.color.alpha * (1 - mutation_size)),
+                                              int(self.color.alpha * (1 + mutation_size)))), 255)
+            self._color = Color(r, g, b, alpha)
 
     # Save the gene in case of program interrupt.
     def save(self):
@@ -206,6 +208,4 @@ class Gene(object):
 
 if __name__ == '__main__':
     g = Gene()
-    print(g)
-    g.load(g.save())
-    print(g)
+    print(g.save())
