@@ -1,5 +1,5 @@
 """ Evolve an image using an Genetic Algorithm
-	using circles for fitting.
+using circles for fitting.
 """
 
 import os
@@ -33,8 +33,8 @@ TARGET_IMAGE_SIZE = target_image.size
 
 class Point(object):
     """ Helper class to define a point
-            in the 2d space. Used to represent
-            an image pixel.
+    in the 2d space. Used to represent
+    an image pixel.
     """
 
     def __init__(self, x, y):
@@ -62,8 +62,8 @@ class Point(object):
 
 class Color(object):
     """ Helper class for representing a color.
-            Represented as a RGB value in radix-256 
-            with opacity.
+    Represented as a RGB value in radix-256 
+    with opacity.
     """
 
     def __init__(self, r, g, b, alpha=0):
@@ -97,15 +97,21 @@ GENE_PARAMS = ['diameter', 'pos', 'color']
 
 
 class Gene(object):
+    """ Gene class representing the gene 
+    in the genetic algorithm. Each gene 
+    contains a circle of randomly generated 
+    size and color, used for fitting the 
+    image.
+    """
 
     def __init__(self):
         # Let diameter of circle be randomly from [2, 15)
         self._diameter = random.randint(2, 15)
-        
+
         # Randomly choose a pixel point in the image space.
         self._pos = Point(random.randint(0, TARGET_IMAGE_WIDTH),
                           random.randint(0, TARGET_IMAGE_HEIGHT))
-        
+
         # Randomly assign color to pixel with random opacity
         self._color = Color(random.randint(0, 256), random.randint(
             0, 256), random.randint(0, 256), random.randint(0, 256))
@@ -129,7 +135,7 @@ class Gene(object):
     def mutate(self):
         # Randomly choose the amount of mutation to be done.
         mutation_size = max(1, int(round(random.gauss(15, 4)))) // 100
-        
+
         # Randomly choose the mutation type from GENE_PARAMS.
         # Options --> diameter, pos, color
         mutation_type = random.choice(GENE_PARAMS)
