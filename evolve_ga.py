@@ -101,9 +101,11 @@ class Gene(object):
     def __init__(self):
         # Let diameter of circle be randomly from [2, 15)
         self._diameter = random.randint(2, 15)
+        
         # Randomly choose a pixel point in the image space.
         self._pos = Point(random.randint(0, TARGET_IMAGE_WIDTH),
                           random.randint(0, TARGET_IMAGE_HEIGHT))
+        
         # Randomly assign color to pixel with random opacity
         self._color = Color(random.randint(0, 256), random.randint(
             0, 256), random.randint(0, 256), random.randint(0, 256))
@@ -127,7 +129,9 @@ class Gene(object):
     def mutate(self):
         # Randomly choose the amount of mutation to be done.
         mutation_size = max(1, int(round(random.gauss(15, 4)))) // 100
+        
         # Randomly choose the mutation type from GENE_PARAMS.
+        # Options --> diameter, pos, color
         mutation_type = random.choice(GENE_PARAMS)
 
         if mutation_type == 'diameter':
