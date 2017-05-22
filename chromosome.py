@@ -66,6 +66,7 @@ class Chromosome(object):
         Also add and/or delete a gene from the
         chromosome randomly.
         """
+        
         if self._gene_count < 100:
             for g in self._genes:
                 if Chromosome.MUTATION_CHANCE < random.random():
@@ -85,9 +86,10 @@ class Chromosome(object):
         and return the image. Each gene from the
         geneset is drawn on to the image.
         """
+
         img = Image.new("RGBA", self._size, (255, 255, 255))
-        poly = Image.new("RGBA", self._size)
-        draw = ImageDraw.Draw(poly)
+        front = Image.new("RGBA", self._size)
+        draw = ImageDraw.Draw(front)
 
         for g in self._genes:
             color = (g.color.r, g.color.g, g.color.b, g.color.alpha)
@@ -95,7 +97,7 @@ class Chromosome(object):
                     (g.pos.x + g.diameter), (g.pos.y + g.diameter))
             draw.ellipse(rect, outline=color, fill=color)
 
-        img.paste(poly, mask=poly)
+        img.paste(front, mask=front)
         return img
 
 if __name__ == "__main__":
