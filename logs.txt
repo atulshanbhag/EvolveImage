@@ -1,1 +1,1 @@
-{"gene_count": 2, "size": {"py/tuple": [150, 150]}, "genes": [{"pos": {"_x": 49, "_y": 47, "py/object": "utils.Point"}, "diameter": 12, "size": {"py/tuple": [150, 150]}, "color": {"_alpha": 161, "_r": 129, "_b": 42, "_g": 152, "py/object": "utils.Color"}}, {"pos": {"_x": 133, "_y": 113, "py/object": "utils.Point"}, "diameter": 4, "size": {"py/tuple": [150, 150]}, "color": {"_alpha": 18, "_r": 37, "_b": 105, "_g": 58, "py/object": "utils.Color"}}]}
+{"size": {"py/tuple": [150, 150]}, "genes": [], "gene_count": 0}

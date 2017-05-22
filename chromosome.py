@@ -125,8 +125,8 @@ class Chromosome(object):
 
 if __name__ == "__main__":
     c = Chromosome((150, 150), 2)
-    print(c)
-    C = c
+    for _ in range(10):
+        c.mutate()
     import jsonpickle
     with open("logs.txt", "w+") as f:
         f.write(jsonpickle.encode(c.save()))
