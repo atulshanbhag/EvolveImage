@@ -94,10 +94,10 @@ class Color(object):
 
 
 class Gene(object):
-    """ Gene class representing the gene 
-    in the genetic algorithm. Each gene 
-    contains a circle of randomly generated 
-    size and color, used for fitting the 
+    """ Gene class representing the gene
+    in the genetic algorithm. Each gene
+    contains a circle of randomly generated
+    size and color, used for fitting the
     image.
     """
 
@@ -174,7 +174,7 @@ class Gene(object):
 
     # Save the gene in case of program interrupt.
     def save(self):
-        """Save the gene object in case 
+        """Save the gene object in case
         of the program interrupt.
         """
 
@@ -185,8 +185,8 @@ class Gene(object):
 
     # Load the saved gene.
     def load(self, s):
-        """ Load the gene object from 
-        save parameter
+        """ Load the gene object from
+        save parameter.
         """
 
         self._diameter = s["diameter"]
@@ -195,20 +195,21 @@ class Gene(object):
 
 
 def fitness(img1, img2):
-    """ Calculate the fitness value for one 
+    """ Calculate the fitness value for one
     image corresponding to another image.
-    Uses Euclidean Mean Squared Error as 
-    fitness function. This fitness function 
-    decides the survival of the genes for 
+    Uses Euclidean Mean Squared Error as
+    fitness function. This fitness function
+    decides the survival of the genes for
     upcoming generations.
 
-    Convert images to numpy arrays for 
+    Convert images to numpy arrays for
     faster computation of fitness value.
     """
 
     im1 = np.array(img1, dtype=np.int16)
     im2 = np.array(img2, dtype=np.int16)
     return (np.abs(im1 - im2).mean() / 255 * 100)
+
 
 if __name__ == "__main__":
     # test gene
