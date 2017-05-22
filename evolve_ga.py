@@ -223,11 +223,33 @@ def fitness(img1, img2):
     return (np.abs(im1 - im2).mean() / 255 * 100)
 
 if __name__ == '__main__':
+    # test gene
     g = Gene()
+
+    # test save working fine
     print(g.save())
 
+    # test blank image
     img = Image.new("RGB", TARGET_IMAGE_SIZE, (255, 255, 255))
+    # test fitness value with blank, working fine
     fitness(target_image, img)
+
+    # test number of cpu cores
+    print("multiprocessing count =", multiprocessing.cpu_count())
+    
+    # test load and save feature using jsonpickle
+    f = open('logs.txt', 'w')
+    f.write(jsonpickle.encode(g.save()))
+    f.close()
+    
+    f = open('logs.txt', 'r')
+    d = jsonpickle.decode(f.read())
+    f.close()
+    
+    print(d)
+    g.load(d)
+    print(g)
+    
     # canvas = ImageDraw.Draw(img)
     # print(canvas)
 
