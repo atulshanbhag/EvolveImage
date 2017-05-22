@@ -66,7 +66,7 @@ class Chromosome(object):
         Also add and/or delete a gene from the
         chromosome randomly.
         """
-        
+
         if self._gene_count < 100:
             for g in self._genes:
                 if Chromosome.MUTATION_CHANCE < random.random():
@@ -99,6 +99,12 @@ class Chromosome(object):
 
         img.paste(front, mask=front)
         return img
+
+    def save(self):
+        pass
+
+    def load(self):
+        pass
 
 if __name__ == "__main__":
     c = Chromosome((150, 150), 125)
