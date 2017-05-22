@@ -101,15 +101,32 @@ class Chromosome(object):
         return img
 
     def save(self):
-        pass
+        """ Save the Chromosome object in
+        case of program interrupt.
+        """
+        s = {"size": self._size,
+             "gene_count": self._gene_count,
+             "genes": self._genes}
 
-    def load(self):
-        pass
+        return s
+
+    def load(self, s):
+        """ Load the Chromosome from
+        save passed as parameter.
+        """
+        self._size = s["size"]
+        self._gene_count = s["gene_count"]
+        self._genes = s["genes"]
+
 
 if __name__ == "__main__":
-    c = Chromosome((150, 150), 125)
-    # print(c)
-    for _ in range(100):
-        c.mutate()
-    # print(c)
-    print(len(c))
+    c = Chromosome((150, 150), 2)
+    print(c)
+    C = c
+    import jsonpickle
+    with open("logs.txt", "w+") as f:
+        f.write(jsonpickle.encode(c.save()))
+        f.seek(0)
+        d = f.read()
+        c.load(jsonpickle.decode(d))
+       	print(c)

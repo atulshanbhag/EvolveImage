@@ -90,7 +90,8 @@ class Gene(object):
         of the program interrupt.
         """
 
-        s = {"diameter": self._diameter,
+        s = {"size": self._size,
+             "diameter": self._diameter,
              "pos": self._pos,
              "color": self._color}
         return s
@@ -101,6 +102,7 @@ class Gene(object):
         save parameter.
         """
 
+        self._size = s["size"]
         self._diameter = s["diameter"]
         self._pos = s["pos"]
         self._color = s["color"]
