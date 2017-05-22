@@ -196,8 +196,6 @@ def fitness(img1, img2):
     faster computation of fitness value.
     """
 
-    # Convert images to numpy arrays for
-    # faster computation of fitness value.
     im1 = np.array(img1, dtype=np.int16)
     im2 = np.array(img2, dtype=np.int16)
     return (np.abs(im1 - im2).mean() / 255 * 100)
