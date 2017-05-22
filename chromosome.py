@@ -106,7 +106,7 @@ class Chromosome(object):
         """
         s = {"size": self._size,
              "gene_count": self._gene_count,
-             "genes": self._genes}
+             "genes": [g.save() for g in self._genes]}
 
         return s
 
@@ -116,7 +116,11 @@ class Chromosome(object):
         """
         self._size = s["size"]
         self._gene_count = s["gene_count"]
-        self._genes = s["genes"]
+        self._genes = []
+        for g in s["genes"]:
+            new_gene = Gene(self._size)
+            new_gene.load(g)
+            self._genes.append(new_gene)
 
 
 if __name__ == "__main__":
@@ -129,4 +133,4 @@ if __name__ == "__main__":
         f.seek(0)
         d = f.read()
         c.load(jsonpickle.decode(d))
-       	print(c)
+        print(c)
