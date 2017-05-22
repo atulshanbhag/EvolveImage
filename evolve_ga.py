@@ -208,14 +208,20 @@ class Gene(object):
 
 
 def fitness(img1, img2):
+    """ Calculate the fitness value for one 
+    image corresponding to another image.
+    Uses Euclidean Mean Squared Error as 
+    fitness function. This fitness function 
+    decides the survival of the genes for 
+    upcoming generations.
+    """
     im1 = np.array(img1, np.int16)
     im2 = np.array(img2, np.int16)
-    print(np.abs(im1 - im2).mean() / 255 * 100)
+    return (np.abs(im1 - im2).mean() / 255 * 100)
 
 if __name__ == '__main__':
     g = Gene()
     print(g.save())
-
 
     img = Image.new("RGB", TARGET_IMAGE_SIZE, (255, 255, 255))
     fitness(target_image, img)
