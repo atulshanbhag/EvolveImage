@@ -7,4 +7,4 @@ WIP
 1. Add Chromosome class.
 2. Add multiple core functionality.
 3. Add Convex polygon fitting capability.
-4. Make modules.
+4. Make modules. --> # DONE

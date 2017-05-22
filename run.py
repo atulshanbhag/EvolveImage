@@ -12,33 +12,36 @@ from utils import fitness
 from gene import Gene
 
 
-def run():
-    # Target image file and location.
-    TARGET_IMAGE_NAME = "monalisa.png"
-    TARGET_LOCATION = os.path.join(os.getcwd(), TARGET_IMAGE_NAME)
-
+def load_image(image="monalisa.png"):
+    """ Load the image file given
+    filename as parameter.
+    """
+    # Target image location
+    TARGET_LOCATION = os.path.join(os.getcwd(), image)
 
     # Load target image file. Error if doesn't exist.
     try:
         target_image = Image.open(TARGET_LOCATION)
     except IOError:
         print("Target image {0} not found. Must be placed as {0}".format(
-            TARGET_IMAGE_NAME, TARGET_LOCATION))
+            image, TARGET_LOCATION))
         sys.exit()
 
+    return target_image
 
-    TARGET_IMAGE_WIDTH = target_image.width
-    TARGET_IMAGE_HEIGHT = target_image.height
-    TARGET_IMAGE_SIZE = target_image.size
+
+def run():
+
+    target_image = load_image()
 
     # test gene
-    g = Gene(TARGET_IMAGE_SIZE)
+    g = Gene(target_image.size)
 
     # test save working fine
     print("Initial save", g.save())
 
     # test blank image
-    img = Image.new("RGB", TARGET_IMAGE_SIZE, (255, 255, 255))
+    img = Image.new("RGB", target_image.size, (255, 255, 255))
     # test fitness value with blank, working fine
     fitness(target_image, img)
 
@@ -62,4 +65,6 @@ def run():
     # im = np.array(target_image)
     # print(im.shape)
 
-run()
+
+if __name__ == "__main__":
+    run()
