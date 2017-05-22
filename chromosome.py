@@ -11,6 +11,7 @@ the canvas, and returns an image.
 """
 
 import random
+from PIL import Image, ImageDraw
 from gene import Gene
 
 
@@ -61,6 +62,9 @@ class Chromosome(object):
         Algorithm. If gene count is fairly small
         mutate all the genes. Else choose a random
         subset of the genes to mutate.
+
+        Also add and/or delete a gene from the
+        chromosome randomly.
         """
         if self._gene_count < 100:
             for g in self._genes:
@@ -76,9 +80,26 @@ class Chromosome(object):
         self.add_gene()
         self.del_gene()
 
+    def draw_image(self):
+        """ Draw the chromosome onto an image
+        and return the image. Each gene from the
+        geneset is drawn on to the image.
+        """
+        img = Image.new("RGBA", self._size, (255, 255, 255))
+        poly = Image.new("RGBA", self._size)
+        draw = ImageDraw.Draw(poly)
+
+        for g in self._genes:
+            color = (g.color.r, g.color.g, g.color.b, g.color.alpha)
+            rect = ((g.pos.x - g.diameter), (g.pos.y - g.diameter),
+                    (g.pos.x + g.diameter), (g.pos.y + g.diameter))
+            draw.ellipse(rect, outline=color, fill=color)
+
+        img.paste(poly, mask=poly)
+        return img
 
 if __name__ == "__main__":
-    c = Chromosome((150, 150))
+    c = Chromosome((150, 150), 125)
     # print(c)
     for _ in range(100):
         c.mutate()
