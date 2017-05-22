@@ -215,8 +215,11 @@ def fitness(img1, img2):
     decides the survival of the genes for 
     upcoming generations.
     """
-    im1 = np.array(img1, np.int16)
-    im2 = np.array(img2, np.int16)
+
+    # Convert images to numpy arrays for 
+    # faster computation of fitness value.
+    im1 = np.array(img1, dtype=np.int16)
+    im2 = np.array(img2, dtype=np.int16)
     return (np.abs(im1 - im2).mean() / 255 * 100)
 
 if __name__ == '__main__':
