@@ -49,16 +49,6 @@ class Point(object):
     def y(self):
         return self._y
 
-    # Save point object in case of interrupt.
-    def save(self):
-        s = {'x': self._x, 'y': self._y}
-        return s
-
-    # Load point object from saved paramter.
-    def load(self, s):
-        self._x = s['x']
-        self._y = s['y']
-
     # Add 2 points
     def __add__(self, other):
         return Point(self.x + other.x, self.y + other.y)
@@ -97,19 +87,6 @@ class Color(object):
     @property
     def alpha(self):
         return self._alpha
-
-    # Save color object in case of interrupt.
-    def save(self):
-        s = {'r': self._r, 'g': self._g,
-             'b': self._b, 'alpha': self._alpha}
-        return s
-
-    # Load color object from saved paramter.
-    def load(self, s):
-        self._r = s['r']
-        self._g = s['g']
-        self._b = s['b']
-        self._alpha = s['alpha']
 
     def __repr__(self):
         return 'Color({0}, {1}, {2}, {3})'.format(
@@ -214,9 +191,12 @@ def fitness(img1, img2):
     fitness function. This fitness function 
     decides the survival of the genes for 
     upcoming generations.
+
+    Convert images to numpy arrays for 
+    faster computation of fitness value.
     """
 
-    # Convert images to numpy arrays for 
+    # Convert images to numpy arrays for
     # faster computation of fitness value.
     im1 = np.array(img1, dtype=np.int16)
     im2 = np.array(img2, dtype=np.int16)
@@ -236,20 +216,20 @@ if __name__ == '__main__':
 
     # test number of cpu cores
     print("multiprocessing count =", multiprocessing.cpu_count())
-    
+
     # test load and save feature using jsonpickle
     f = open('logs.txt', 'w')
     f.write(jsonpickle.encode(g.save()))
     f.close()
-    
+
     f = open('logs.txt', 'r')
     d = jsonpickle.decode(f.read())
     f.close()
-    
+
     print(d)
     g.load(d)
     print(g)
-    
+
     # canvas = ImageDraw.Draw(img)
     # print(canvas)
 
