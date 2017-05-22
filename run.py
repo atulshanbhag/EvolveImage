@@ -34,37 +34,6 @@ def run():
 
     target_image = load_image()
 
-    # test gene
-    g = Gene(target_image.size)
-
-    # test save working fine
-    print("Initial save", g.save())
-
-    # test blank image
-    img = Image.new("RGB", target_image.size, (255, 255, 255))
-    # test fitness value with blank, working fine
-    fitness(target_image, img)
-
-    # test number of cpu cores
-    print("multiprocessing count =", multiprocessing.cpu_count())
-
-    # test load and save feature using jsonpickle
-    with open("logs.txt", 'w+') as f:
-        f.write(jsonpickle.encode(g.save()))
-
-        f.seek(0)
-        d = jsonpickle.decode(f.read())
-
-    print("Final save", d)
-    g.load(d)
-    print(g)
-
-    # canvas = ImageDraw.Draw(img)
-    # print(canvas)
-
-    # im = np.array(target_image)
-    # print(im.shape)
-
 
 if __name__ == "__main__":
     run()
