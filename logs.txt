@@ -1,1 +1,1 @@
-{"color": {"_b": 10, "_g": 90, "_alpha": 212, "py/object": "__main__.Color", "_r": 68}, "diameter": 6, "pos": {"_y": 114, "_x": 140, "py/object": "__main__.Point"}}
+{"color": {"py/object": "utils.Color", "_b": 58, "_alpha": 152, "_g": 226, "_r": 60}, "pos": {"py/object": "utils.Point", "_x": 57, "_y": 128}, "diameter": 7}
