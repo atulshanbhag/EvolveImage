@@ -55,32 +55,32 @@ class Gene(object):
         if mutation_type == "diameter":
             self._diameter = max(1, random.randint(int(
                 self._diameter * (1 - mutation_size)), int(
-                self.diameter * (1 + mutation_size))))
+                self._diameter * (1 + mutation_size))))
 
         elif mutation_type == "pos":
             x = max(0, random.randint(
-                int(self.pos.x * (1 - mutation_size)), int(
-                    self.pos.x * (1 + mutation_size))))
+                int(self._pos.x * (1 - mutation_size)), int(
+                    self._pos.x * (1 + mutation_size))))
             y = max(0, random.randint(
-                int(self.pos.y * (1 - mutation_size)), int(
-                    self.pos.y * (1 + mutation_size))))
+                int(self._pos.y * (1 - mutation_size)), int(
+                    self._pos.y * (1 + mutation_size))))
             self._pos = Point(min(x, self._width), min(
                 y, self._height))
 
         # mutation_type == color
         else:
             r = min(max(0, random.randint(
-                int(self.color.r * (1 - mutation_size)),
-                int(self.color.r * (1 + mutation_size)))), 255)
+                int(self._color.r * (1 - mutation_size)),
+                int(self._color.r * (1 + mutation_size)))), 255)
             g = min(max(0, random.randint(
-                int(self.color.g * (1 - mutation_size)),
-                int(self.color.g * (1 + mutation_size)))), 255)
+                int(self._color.g * (1 - mutation_size)),
+                int(self._color.g * (1 + mutation_size)))), 255)
             b = min(max(0, random.randint(
-                int(self.color.b * (1 - mutation_size)),
-                int(self.color.b * (1 + mutation_size)))), 255)
+                int(self._color.b * (1 - mutation_size)),
+                int(self._color.b * (1 + mutation_size)))), 255)
             alpha = min(max(0, random.randint(
-                int(self.color.alpha * (1 - mutation_size)),
-                int(self.color.alpha * (1 + mutation_size)))), 255)
+                int(self._color.alpha * (1 - mutation_size)),
+                int(self._color.alpha * (1 + mutation_size)))), 255)
 
             self._color = Color(r, g, b, alpha)
 

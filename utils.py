@@ -2,7 +2,10 @@
 for evolving images.
 """
 
+import os
+import sys
 import numpy as np
+from PIL import Image
 
 
 class Point(object):
@@ -40,7 +43,7 @@ class Color(object):
     with opacity.
     """
 
-    def __init__(self, r, g, b, alpha=0):
+    def __init__(self, r, g, b, alpha=255):
         self._r = r
         self._g = g
         self._b = b
@@ -67,6 +70,24 @@ class Color(object):
             self._r, self._g, self._b, self._alpha)
 
 
+def load_image(image="monalisa.png"):
+    """ Load the image file given
+    filename as parameter.
+    """
+    # Target image location
+    TARGET_LOCATION = os.path.join(os.getcwd(), image)
+
+    # Load target image file. Error if doesn't exist.
+    try:
+        target_image = Image.open(TARGET_LOCATION)
+    except IOError:
+        print("Target image {0} not found. Must be placed as {0}".format(
+            image, TARGET_LOCATION))
+        sys.exit()
+
+    return target_image
+
+
 def fitness(img1, img2):
     """ Calculate the fitness value for one
     image corresponding to another image.
@@ -81,7 +102,7 @@ def fitness(img1, img2):
 
     im1 = np.array(img1, dtype=np.int16)
     im2 = np.array(img2, dtype=np.int16)
-    
+
     return (np.abs(im1 - im2).mean() / 255 * 100)
 
 

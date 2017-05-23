@@ -81,7 +81,7 @@ class Chromosome(object):
         self.add_gene()
         self.del_gene()
 
-    def draw_image(self):
+    def draw(self):
         """ Draw the chromosome onto an image
         and return the image. Each gene from the
         geneset is drawn on to the image.
@@ -100,11 +100,12 @@ class Chromosome(object):
         img.paste(front, mask=front)
         return img
 
-    def save(self):
+    def save(self, gen):
         """ Save the Chromosome object in
         case of program interrupt.
         """
-        s = {"size": self._size,
+        s = {"generation": gen,
+             "size": self._size,
              "gene_count": self._gene_count,
              "genes": [g.save() for g in self._genes]}
 
@@ -121,6 +122,8 @@ class Chromosome(object):
             new_gene = Gene(self._size)
             new_gene.load(g)
             self._genes.append(new_gene)
+
+        return s["generation"]
 
 
 if __name__ == "__main__":
