@@ -102,7 +102,7 @@ if __name__ == "__main__":
             # -s option for specifying the saved file.
 
             # Example usage -->
-            # >>> python run.py -s results/100.txt
+            # >>> python run.py -s 100.txt
             # This will run the script from the specified
             # log file.
             elif a == "-s":
