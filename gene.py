@@ -106,8 +106,3 @@ class Gene(object):
         self._diameter = s["diameter"]
         self._pos = s["pos"]
         self._color = s["color"]
-
-
-if __name__ == "__main__":
-    g = Gene((150, 150))
-    print(g)

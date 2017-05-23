@@ -124,16 +124,3 @@ class Chromosome(object):
             self._genes.append(new_gene)
 
         return s["generation"]
-
-
-if __name__ == "__main__":
-    c = Chromosome((150, 150), 2)
-    for _ in range(10):
-        c.mutate()
-    import jsonpickle
-    with open("logs.txt", "w+") as f:
-        f.write(jsonpickle.encode(c.save()))
-        f.seek(0)
-        d = f.read()
-        c.load(jsonpickle.decode(d))
-        print(c)

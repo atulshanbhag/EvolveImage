@@ -5,6 +5,7 @@ for evolving images.
 import os
 import sys
 import numpy as np
+from copy import deepcopy
 from PIL import Image
 
 
@@ -75,11 +76,11 @@ def load_image(image="monalisa.png"):
     filename as parameter.
     """
     # Target image location
-    TARGET_LOCATION = os.path.join(os.getcwd(), image)
+    TARGET_LOCATION = os.path.join("images", image)
 
     # Load target image file. Error if doesn't exist.
     try:
-        target_image = Image.open(TARGET_LOCATION)
+        target_image = Image.open(TARGET_LOCATION).convert("RGBA")
     except IOError:
         print("Target image {0} not found. Must be placed as {0}".format(
             image, TARGET_LOCATION))
@@ -106,8 +107,27 @@ def fitness(img1, img2):
     return (np.abs(im1 - im2).mean() / 255 * 100)
 
 
-if __name__ == "__main__":
-    p = Point(10, 10)
-    print(p)
-    c = Color(10, 10, 10, 10)
-    print(c)
+def mutate_test(parent, target):
+    """ Randomly mutate a chromosome
+    given as parameter. Return new fitness
+    value compared with target. Exit on
+    KeyboardInterrupt.
+    """
+
+    try:
+        child = deepcopy(parent)
+        child.mutate()
+        return (fitness(child.draw(), target), child)
+    except KeyboardInterrupt:
+        pass
+
+
+def group_mutate(parent, num_child, pool, target):
+    """ Return num_child children on
+    mutating the parent. Run the mutations
+    on mutiple cores.
+    """
+
+    results = pool.starmap(mutate_test,
+                           [(parent, target) for _ in range(num_child)])
+    return results
