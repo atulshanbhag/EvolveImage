@@ -9,7 +9,7 @@ import utils
 from chromosome import Chromosome
 
 
-def run(target, cores, images=None):
+def run(target, cores, s=None):
     """ Genetic Algorithm run here.
     Stores the image results in RESULTS
     directory, after every SAVE_PER_GEN
