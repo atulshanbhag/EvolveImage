@@ -71,19 +71,17 @@ class Color(object):
             self._r, self._g, self._b, self._alpha)
 
 
-def load_image(image="monalisa.png"):
+def load_image(image):
     """ Load the image file given
-    filename as parameter.
+    file location as parameter.
     """
-    # Target image location
-    TARGET_LOCATION = os.path.join("images", image)
 
     # Load target image file. Error if doesn't exist.
     try:
-        target_image = Image.open(TARGET_LOCATION).convert("RGBA")
+        target_image = Image.open(image).convert("RGBA")
     except IOError:
         print("Target image {0} not found. Must be placed as {0}".format(
-            image, TARGET_LOCATION))
+            image, image))
         sys.exit()
 
     return target_image

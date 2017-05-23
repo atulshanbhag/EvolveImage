@@ -86,6 +86,8 @@ def run(target, cores, s=None):
 if __name__ == "__main__":
     cores = max(1, multiprocessing.cpu_count() - 1)
     s = None
+    IMAGES = "images"
+    RESULTS = "results"
     target_name = "white.jpg"
 
     if len(sys.argv) > 1:
@@ -104,7 +106,8 @@ if __name__ == "__main__":
             # This will run the script from the specified
             # log file.
             elif a == "-s":
-                with open(args[i + 1], "r") as save:
+                SAVE_LOCATION = os.path.join(RESULTS, args[i + 1])
+                with open(SAVE_LOCATION, "r") as save:
                     s = save.read()
 
             # -i option for specifying the image file.
@@ -119,6 +122,7 @@ if __name__ == "__main__":
                 pass
 
     # Load image.
-    target = utils.load_image(target_name)
+    IMAGE_LOCATION = os.path.join(IMAGES, target_name)
+    target = utils.load_image(IMAGE_LOCATION)
 
     run(target, cores, s)
