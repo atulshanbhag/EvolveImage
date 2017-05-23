@@ -2,7 +2,6 @@
 for evolving images.
 """
 
-import os
 import sys
 import numpy as np
 from copy import deepcopy
