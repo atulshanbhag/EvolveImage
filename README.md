@@ -1,7 +1,7 @@
 # EvolveImage
 
-Evolve Images using Genetic Algorithm.
-Tested on Mona Lisa image. 
+Evolve Images using Simulated Annealing.
+Tested on Mona Lisa, Apple and White Cirlce images. 
 
 WIP
 1. Add Chromosome class. --> # DONE
