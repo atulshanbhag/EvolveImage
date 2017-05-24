@@ -1,5 +1,6 @@
-""" Evolve an image using an Genetic Simulated Annealing
-using circles for fitting.
+""" Evolve an image using an Genetic
+Hill Climbing Algorithm using circles
+for fitting.
 """
 import os
 import sys
@@ -10,7 +11,7 @@ from chromosome import Chromosome
 
 
 def run(target, cores, s=None):
-    """ Genetic Simulated Annealing run here.
+    """ Genetic Hill Climbing Algorithm run here.
     Stores the image results in RESULTS
     directory, after every SAVE_PER_GEN
     generations .
@@ -39,7 +40,7 @@ def run(target, cores, s=None):
     p = multiprocessing.Pool(cores)
 
     # Frequency of saves and number of children
-    # per generation of Genetic Simulated Annealing.
+    # per generation of Genetic Hill Climbing Algorithm.
     SAVE_PER_GEN = 500
     CHILDS_PER_GEN = 50
 

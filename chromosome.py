@@ -1,7 +1,7 @@
 """ Class for Chromosome object. It
 is a collection of Genes which correspond
 to the current generation of the species
-used in the Genetic Simulated Annealing.
+used in the Genetic Hill Climbing Algorithm.
 Selection, Reproduction, Crossover and
 Mutation occur on these chromosomes, and
 the fittest chromosome survive.

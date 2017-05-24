@@ -1,4 +1,4 @@
-""" Utils for Genetic Simulated Annealing used
+""" Utils for Genetic Hill Climbing Algorithm used
 for evolving images.
 """
 

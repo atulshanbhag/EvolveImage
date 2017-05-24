@@ -1,5 +1,5 @@
 """ Gene class representing the gene
-in the Genetic Simulated Annealing. Each gene
+in the Genetic Hill Climbing Algorithm. Each gene
 contains a circle of randomly generated
 size and color, used for fitting the
 image.
