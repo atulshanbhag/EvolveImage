@@ -101,7 +101,7 @@ def fitness(img1, img2):
     im1 = np.array(img1, dtype=np.int16)
     im2 = np.array(img2, dtype=np.int16)
 
-    return (np.abs(im1 - im2).mean() / 255 * 100)
+    return (np.abs(im1 - im2).mean() / 256 * 100)
 
 
 def mutate_test(parent, target):
