@@ -2,7 +2,7 @@
 
 Evolve Images using Genetic Hill Climbing Algorithm.
 
-Tested on Mona Lisa, Apple and White Cirlce images. 
+Tested on Mona Lisa, Apple and White Circle images. 
 
 WIP
 1. Add Chromosome class. --> # DONE
