@@ -40,19 +40,20 @@ def run(target, cores, s=None):
 
     # Frequency of saves and number of children
     # per generation of genetic algorithm.
-    SAVE_PER_GEN = 50
+    SAVE_PER_GEN = 500
     CHILDS_PER_GEN = 50
 
     while True:
 
-        print("Generation {0} Score {1}".format(
-            generation, round(score, 5)))
         f.write("Generation {0} Score {1}\n".format(
             generation, round(score, 5)))
 
         # Draw the image and save it.
         # Also save the logs.
         if generation % SAVE_PER_GEN == 0:
+            print("Generation {0}\tScore {1}".format(
+                generation, round(score, 5)))
+            
             parent.draw().save(os.path.join(
                 RESULTS, "{0}.png".format(generation)))
 

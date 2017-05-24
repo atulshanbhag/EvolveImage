@@ -79,7 +79,7 @@ def load_image(image):
     try:
         target_image = Image.open(image).convert("RGBA")
     except IOError:
-        print("Target image {0} not found. Must be placed as {0}".format(
+        print("Target image {0} not found. Must be placed as {1}".format(
             image, image))
         sys.exit()
 
