@@ -1,6 +1,6 @@
 # EvolveImage
 
-Evolve Images using Simulated Annealing.
+Evolve Images using Genetic Simulated Annealing.
 Tested on Mona Lisa, Apple and White Cirlce images. 
 
 WIP

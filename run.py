@@ -1,4 +1,4 @@
-""" Evolve an image using an Simulated Annealing
+""" Evolve an image using an Genetic Simulated Annealing
 using circles for fitting.
 """
 import os
@@ -10,7 +10,7 @@ from chromosome import Chromosome
 
 
 def run(target, cores, s=None):
-    """ Simulated Annealing run here.
+    """ Genetic Simulated Annealing run here.
     Stores the image results in RESULTS
     directory, after every SAVE_PER_GEN
     generations .
@@ -39,7 +39,7 @@ def run(target, cores, s=None):
     p = multiprocessing.Pool(cores)
 
     # Frequency of saves and number of children
-    # per generation of Simulated Annealing.
+    # per generation of Genetic Simulated Annealing.
     SAVE_PER_GEN = 500
     CHILDS_PER_GEN = 50
 

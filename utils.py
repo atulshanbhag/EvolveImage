@@ -1,4 +1,4 @@
-""" Utils for Simulated Annealing used
+""" Utils for Genetic Simulated Annealing used
 for evolving images.
 """
 
