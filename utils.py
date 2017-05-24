@@ -1,4 +1,4 @@
-""" Utils for Genetic Algorithm used
+""" Utils for Simulated Annealing used
 for evolving images.
 """
 

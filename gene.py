@@ -1,5 +1,5 @@
 """ Gene class representing the gene
-in the genetic algorithm. Each gene
+in the Simulated Annealing. Each gene
 contains a circle of randomly generated
 size and color, used for fitting the
 image.
